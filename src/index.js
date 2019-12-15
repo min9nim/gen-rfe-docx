@@ -31,18 +31,16 @@ app.get('/anony', function (req, res) {
 });
 
 app.get('/generated/*.docx', function (req, res){
-  console.log(req.originalUrl)
+  // console.log(req.originalUrl)
   const mimetype = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   const filename = req.originalUrl.split('/')[2]
-  // var data = fs.readFileSync(path.resolve(path2, 'output.docx'), 'binary');
-  console.log('read: ' + '/tmp/' + filename)
+  // console.log('read: ' + '/tmp/' + filename)
   var data = fs.readFileSync('/tmp/' + filename, 'binary');
   download(data, filename, mimetype, res)
 })
-// 서비스 포트
-//console.log("process.env.PORT = " + process.env.PORT)
-const PORT = process.env.PORT || 3000
 
+// 서비스 포트
+const PORT = process.env.PORT || 3000
 app.listen(PORT, function () {
   console.log('Example app listening on port' + PORT);
 });

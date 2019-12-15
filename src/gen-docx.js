@@ -45,15 +45,8 @@ module.exports = function genDocx(json){
               .generate({type: 'nodebuffer'});
 
   // buf is a nodejs buffer, you can either write it to a file or do anything else with it.
-//   if(process.env.PORT){
     const filename =  Date.now() + '.docx'
-    // const filename = '/tmp/output.docx'
-    console.log(filename)
     fs.writeFileSync('/tmp/' + filename, buf);
     return filename
-//   }else{
-//       console.log('public,,,,')
-//     fs.writeFileSync(path.resolve(__dirname + '/../public/', 'output.docx'), buf);
-//   }
 } 
 
