@@ -71,6 +71,7 @@
 
           function md2json(str){
             const lines = str.split('\n')
+            lines.splice(0,2) // 헤더영역 날려버림
             const list = lines.filter(Boolean).map((line, idx) => {
               const items = line.split('|')
               return {
@@ -99,7 +100,19 @@
           function formatNumber(num) {
             // https://blog.abelotech.com/posts/number-currency-formatting-javascript/
             return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-          }          
+          }
+          
+          window.onload = function(){
+            fetch('/anony', {
+                method: 'GET', // *GET, POST, PUT, DELETE, etc.
+            })
+            .then(response => response.json())
+            .then(res => {
+              console.log(res)
+              const textarea = document.getElementById('input')
+              textarea.value = res.output.content
+            })
+          }
           
       </script>
     </body>

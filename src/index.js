@@ -4,6 +4,7 @@ var genDocx = require('./gen-docx')
 var download = require('./download')
 var fs = require('fs');
 var path = require('path');
+const fetch = require('node-fetch');
 
 app.use(express.json())
 // app.use(express.static('public'));
@@ -16,6 +17,17 @@ app.post('/gen-docx', function (req, res) {
 
 app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname + '/../public/', 'index.html'));
+});
+
+app.get('/anony', function (req, res) {
+  fetch('https://anony-react.appspot.com/api/posts/view/SylrTKOQCr', {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+  })
+  .then(response => response.json())
+  .then(json => {
+    console.log(json)
+    res.send(json)
+  })
 });
 
 app.get('/generated/*.docx', function (req, res){
