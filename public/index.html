@@ -4,16 +4,20 @@
       <style>
         .main{
           display: flex;
-          flex-direction: column;
+          /* flex-direction: column; */
         }
         .main .input{
           flex: 1;
-          margin: 20px;
-          height: 500px;
+          margin: 10px;
+          height: 600px;
         }
+        .main .input textarea{
+          width: 100%;
+          height: 100%;
+        }        
         .main .preview{
           flex:1;
-          margin: 20px;
+          margin: 10px;
           height: 600px;
         }
         .main .preview iframe{
@@ -22,42 +26,20 @@
         }       
         .btn{
           width: 100px;
-          margin: 20px;
+          margin: 10px;
         }
       </style>
   </head>
     <body>
       <div class="main">
+        <div class="input">
+          <textarea id="input"></textarea>
+        </div>
         <div class="preview">
             <iframe id="preview"></iframe>
         </div>
-        <button class="btn" onclick="generate()">preview</button>  
-        <textarea id="input" rows="40" class="input">{
-            "year": "2019",
-            "month": "12",
-            "createDate": "2019.12.31",
-            "sum": "1,000",
-            "list": [{
-                "date": "2019.12.01",
-                "location": "테스트",
-                "purpose": "스벅",
-                "amount": "8,900",
-                "no": "1"
-            }, {
-                "date": "2019.12.01",
-                "location": "테스트",
-                "purpose": "스벅2",
-                "amount": "8,900",
-                "no": "2"
-            }, {
-                "date": "2019.12.01",
-                "location": "테스트",
-                "purpose": "스벅2",
-                "amount": "8,900",
-                "no": "2"
-            }]
-        }</textarea>
       </div>
+      <button class="btn" onclick="generate()">preview</button>  
       <script>
           function generate(){
             const value = document.getElementById('input').value
