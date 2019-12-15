@@ -12,6 +12,7 @@
           height: 600px;
         }
         .main .input textarea{
+          font-size: 16px;
           width: 100%;
           height: 100%;
         }        
@@ -42,7 +43,9 @@
       <button class="btn" onclick="generate()">preview</button>  
       <script>
           function generate(){
-            const value = document.getElementById('input').value
+            const str = document.getElementById('input').value
+            const json = md2json(str)
+            console.log(json)
             fetch('/gen-docx', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, cors, *same-origin
@@ -54,7 +57,7 @@
                 },
                 redirect: 'follow', // manual, *follow, error
                 referrer: 'no-referrer', // no-referrer, *client
-                body: value, // body data type must match "Content-Type" header
+                body: JSON.stringify(json), // body data type must match "Content-Type" header
             })
             .then(response => response.json())
             .then(res => {
@@ -62,10 +65,42 @@
               const preview = document.getElementById('preview')
               const url = 'https://view.officeapps.live.com/op/embed.aspx?src=https://gen-rfe-docx.min1.now.sh/generated/'
               const newUrl = url + res.res
-              console.log(newUrl)
               preview.src = newUrl
             }); // parses JSON response into native JavaScript objects 
           }
+
+          function md2json(str){
+            const lines = str.split('\n')
+            const list = lines.filter(Boolean).map((line, idx) => {
+              const items = line.split('|')
+              return {
+                date: items[0].trim(),
+                location: items[1].trim(),
+                purpose: items[2].trim(),
+                amount: items[3].trim(),
+                no: idx+1,
+              }
+            })
+            
+            const [year, month] = list[0].date.split('.')
+            const createDate = list[list.length-1].date
+            const sum = list.reduce((acc, line) => {
+              return acc + Number(line.amount.replace(/,/g, ''))
+            }, 0)
+            return {
+              year,
+              month,
+              createDate,
+              sum: formatNumber(sum),
+              list,
+            }
+          }
+
+          function formatNumber(num) {
+            // https://blog.abelotech.com/posts/number-currency-formatting-javascript/
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+          }          
+          
       </script>
     </body>
 </html>
