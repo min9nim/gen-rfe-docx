@@ -17,7 +17,7 @@
           height: 100%;
         }        
         .main .preview{
-          flex:1;
+          flex:4;
           margin: 10px;
           height: 600px;
         }
@@ -63,7 +63,7 @@
             .then(res => {
               console.log(res)
               const preview = document.getElementById('preview')
-              const url = 'https://view.officeapps.live.com/op/embed.aspx?src=https://gen-rfe-docx.min1.now.sh/generated/'
+              const url = 'https://view.officeapps.live.com/op/embed.aspx?src=https://gen-rfe-docx.now.sh/generated/'
               const newUrl = url + res.res
               preview.src = newUrl
             }); // parses JSON response into native JavaScript objects 
@@ -111,6 +111,7 @@
               console.log(res)
               const textarea = document.getElementById('input')
               textarea.value = res.output.content
+              generate()
             })
           }
           
