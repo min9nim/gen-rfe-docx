@@ -51,7 +51,7 @@
           function generate(){
             const str = document.getElementById('input').value
             const json = md2json(str)
-            console.log(json)
+            // console.log(json)
             fetch('/gen-docx', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, cors, *same-origin
@@ -67,7 +67,7 @@
             })
             .then(response => response.json())
             .then(res => {
-              console.log(res)
+              // console.log(res)
               const preview = document.getElementById('preview')
               const url = 'https://view.officeapps.live.com/op/embed.aspx?src=https://gen-rfe-docx.now.sh/generated/'
               const newUrl = url + res.res
@@ -114,7 +114,7 @@
             })
             .then(response => response.json())
             .then(res => {
-              console.log(res)
+              // console.log(res)
               const textarea = document.getElementById('input')
               textarea.value = res.output.content
               generate()
