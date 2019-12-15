@@ -4,25 +4,9 @@
   "builds": [{ "src": "src/index.js", "use": "@now/node-server" }],
   "routes": [
     {
-      "src": "/gen-docx",
+      "src": "/.*",
       "dest": "/src/index.js",
       "methods": ["POST", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*"
-      }
-    },
-    {
-      "src": "/",
-      "dest": "/src/index.js",
-      "methods": ["GET", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*"
-      }
-    },
-    {
-      "src": "/generated/.*",
-      "dest": "/src/index.js",
-      "methods": ["GET", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Origin": "*"
       }
