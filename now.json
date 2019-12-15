@@ -6,7 +6,7 @@
     {
       "src": "/.*",
       "dest": "/src/index.js",
-      "methods": ["POST", "OPTIONS"],
+      "methods": ["GET", "POST", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Origin": "*"
       }
