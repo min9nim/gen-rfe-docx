@@ -7,7 +7,7 @@ var fs = require('fs');
 const fetch = require('node-fetch');
 
 app.use(express.json())
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 app.post('/gen-docx', function (req, res) {
   console.log(req.body)
@@ -15,9 +15,9 @@ app.post('/gen-docx', function (req, res) {
   res.send({res: filename});
 });
 
-// app.get('/', function (req, res) {
-//   res.sendFile(path.resolve(__dirname + '/../public/', 'index.html'));
-// });
+app.get('/', function (req, res) {
+  res.sendFile(path.resolve(__dirname + '/../public/', 'index.html'));
+});
 
 app.get('/anony', function (req, res) {
   fetch('https://anony-react.appspot.com/api/posts/view/SylrTKOQCr', {
