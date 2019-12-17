@@ -46,7 +46,7 @@ module.exports = function genDocx(json){
 
   // buf is a nodejs buffer, you can either write it to a file or do anything else with it.
     const filename =  Date.now() + '.docx'
-    fs.writeFileSync('/tmp/' + filename, buf);
+    fs.writeFileSync('/tmp/' + filename, buf);      // now 배포환경에서는 /tmp/ 에만 파일쓰기 가능
     return filename
 } 
 
