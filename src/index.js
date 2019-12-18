@@ -10,7 +10,7 @@ app.use(express.json())
 // app.use(express.static('public'));
 
 app.post('/gen-docx', function (req, res) {
-  console.log(req.body)
+  // console.log(req.body)
   const filename = genDocx(req.body)
   res.send({res: filename});
 });
@@ -25,7 +25,7 @@ app.get('/anony', function (req, res) {
   })
   .then(response => response.json())
   .then(json => {
-    console.log(json)
+    // console.log(json)
     res.send(json)
   })
 });
