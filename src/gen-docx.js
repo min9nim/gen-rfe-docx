@@ -7,12 +7,12 @@ var path = require("path")
 module.exports = function genDocx(json) {
   const filename = hash(json) + ".docx"
   const fullPath = "/tmp/" + filename
-  console.log("filename = " + filename, fullPath)
+  console.log("### fullPath = " + fullPath)
   if (fs.existsSync(fullPath)) {
-    console.log("hit")
+    console.log("### hit")
     return filename
   } else {
-    console.log("new json")
+    console.log("### new json")
   }
 
   //Load the docx file as a binary
