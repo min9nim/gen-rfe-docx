@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "docxtemplater": "^3.15.2",
+    "docxtemplater": "^3.31.4",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0",
     "object-hash": "^2.0.1",
